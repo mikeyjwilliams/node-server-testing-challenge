@@ -8,6 +8,7 @@ module.exports = {
   add,
   changeAns,
   getAll,
+  remove,
 };
 
 function findBy(filter) {
@@ -38,4 +39,10 @@ async function changeAns(id, changes) {
 
 function getAll() {
   return db('answers').select();
+}
+
+function remove(id) {
+  return db('answers')
+    .where({ id })
+    .del();
 }

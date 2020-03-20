@@ -2,7 +2,7 @@
 const db = require('../data/config');
 const answerModel = require('./answers-model');
 
-beforeEach(async () => {
+beforeAll(async () => {
   await db.seed.run();
 });
 
@@ -13,12 +13,19 @@ describe('model findById', () => {
   });
 });
 
+describe('gets all answers', () => {
+  test('getAll method for answers', async () => {
+    const res = await answerModel.getAll();
+    expect(res).toHaveLength(3);
+  });
+});
+
 describe('answers add resource', () => {
   test('insert', async () => {
     const payload = {
       title: 'es6 map question',
       solution: 'check mozilla docs',
-      comments: 'mozilla is best first place to look',
+      comment: 'mozilla is best first place to look',
     };
     const res = await answerModel.add(payload);
     expect(res.title).toMatch(/es6 map question/i);
@@ -37,15 +44,16 @@ describe('answers update id 1 data', () => {
     const update = {
       title: 'another database answer',
       solution: 'read the docs for your specific dbms carefully.',
-      comments: 'its the best way to learn',
+      comment: 'its the best way to learn',
     };
     const res = await answerModel.changeAns(1, update);
     expect(res.title).toMatch(/another database answer/i);
   });
 });
 
-describe('gets all answers', () => {
-  test('getAll method for answers', async () => {
+describe('remove a resource', () => {
+  test('remove', async () => {
+    await answerModel.remove(4);
     const res = await answerModel.getAll();
     expect(res).toHaveLength(3);
   });
