@@ -1,10 +1,8 @@
 /** @format */
 
-const express = require('express');
 const port = 5000;
+server = require('./server');
 
-const router = express();
-
-router.listen(port, () => {
-  console.log(` \n *** http:localhost:${port} *** \n`);
+server.listen(port, () => {
+  console.log(` \n *** http://localhost:${port} *** \n`);
 });
