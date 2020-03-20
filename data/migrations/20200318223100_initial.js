@@ -8,7 +8,7 @@ exports.up = async function(knex) {
       .notNullable()
       .unique();
     tbl.text('solution').notNullable();
-    tbl.text('comments').nullable();
+    tbl.text('comment').nullable();
   });
 };
 

@@ -8,18 +8,18 @@ exports.seed = async function(knex) {
     {
       title: 'database is locked',
       solution: 'use --runInBand to run all syncronously.',
-      comments:
+      comment:
         'sometimes database is locked due to dbBrowser or some other call similar and need to write changes first',
     },
     {
       title: 'node issue',
       solution: 'check version',
-      comments: 'not all items are compatiable with all versions',
+      comment: 'not all items are compatiable with all versions',
     },
     {
       title: 'jest',
       solution: 'check docs',
-      comments: 'when in doubt read the docs... thats all i got.',
+      comment: 'when in doubt read the docs... thats all i got.',
     },
   ]);
 };
